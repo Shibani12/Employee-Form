@@ -1,5 +1,5 @@
 <template>
-  <div class="side-bar">
+<div class="Form">
     <!-- Navbar 1st attempt
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -65,6 +65,8 @@
   </div>
 </nav> -->
 
+
+
 <!-- 3rd attempt success navbar -->
 <div class="collapse" id="navbarToggleExternalContent">
   <div class="bg-light p-4">
@@ -89,8 +91,75 @@
   </div>
 </nav>
 
-    
+<div class="relative flex min-h-screen">
+  <div class="bg-cyan-600 text-cyan-100">Sidebar</div>
+  <div>
+    <div>Header</div>
+    <div>Content</div>
+  </div>
 </div>
+<!-- <sidebar-menu :menu="menu" /> -->
+
+<!-- <form>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Employee Name</label>
+    <input type="empname" class="form-control" id="exampleFormControlInput1" placeholder="Employee Name">
+    <label for="exampleFormControlInput2">Employee ID</label>
+    <input type="empid" class="form-control" id="exampleFormControlInput2" placeholder="Emplyee ID">
+  </div>
+</form> -->
+
+<!-- <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
+  <b-form-input id="input-2" v-model="form.name" placeholder="Enter name" required></b-form-input>
+</b-form-group> -->
+
+<form>
+  <div class="row">
+    <div class="col">
+      <label for="exampleFormControlInput1">Employee Name
+      <input type="text" class="form-control" placeholder="First name">
+    </label>
+    </div>
+    <div class="col">
+      <label for="exampleFormControlInput2">Employee ID
+      <input type="text" class="form-control" placeholder="Last name">
+    </label>
+  </div>
+  
+  <div>
+      <button type="button" class="btn btn-primary btn-space">Add</button>
+  </div>
+
+
+    <table class="table table-bordered">
+      <thead>
+    <tr>
+      <th scope="col">Sr No.</th>
+      <th scope="col">Name</th>
+      <th scope="col">ID</th>
+      <th scope="col">Action</th>
+    </tr>
+    <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Shibani</td>
+      <td>568</td>
+      <td>
+        <button type="button" class="btn btn-danger btn-space">Delete</button>
+        <button type="button" class="btn btn-primary btn-space">Edit</button>
+      </td>
+    </tr>
+    </tbody>
+  </thead>
+    </table>
+    
+  </div>
+</form>
+
+</div>
+
+
+
 </template>
 
 <script>
@@ -98,8 +167,34 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+    data() {
+      return {
+        menu: [
+          {
+            header: 'Main Navigation',
+            hiddenOnCollapse: true
+          },
+          {
+            href: '/',
+            title: 'Dashboard',
+            icon: 'fa fa-user'
+          },
+          {
+            href: '/charts',
+            title: 'Charts',
+            icon: 'fa fa-chart-area',
+            child: [
+              {
+                href: '/charts/sublink',
+                title: 'Sub Link'
+              }
+            ]
+          }
+        ]
+      }
+    }
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -117,5 +212,8 @@ li {
 }
 a {
   color: #42b983;
+}
+.btn-space {
+    margin-right: 8px;
 }
 </style>
