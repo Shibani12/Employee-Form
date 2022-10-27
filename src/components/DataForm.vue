@@ -39,6 +39,7 @@
 </nav>
 
 <form>
+  <div class="format1">
   <div class="row">
     <div class="col">
       <label for="exampleFormControlInput1">Employee Name
@@ -48,27 +49,51 @@
     <div class="col">
       <label for="exampleFormControlInput2">Employee ID
       <input type="text" class="form-control" placeholder="Last name">
+      
     </label>
   </div>
-  
-  <div>
-      <button type="button" class="btn btn-primary btn-space">Add</button>
+  <div class="col">
+     
+      <button type="button" class="btn btn-primary btn-space btn1">Add</button>
   </div>
+</div>
+  
+  <!-- <div>
+      <button type="button" class="btn btn-primary btn-space">Add</button>
+  </div> -->
 
 
     <table class="table table-bordered">
-      <thead>
+      <thead class="col1">
     <tr>
-      <th scope="col">Sr No.</th>
-      <th scope="col">Name</th>
-      <th scope="col">ID</th>
-      <th scope="col">Action</th>
+      <th scope="col" class="control">Sr No.</th>
+      <th scope="col" class="control">Name</th>
+      <th scope="col" class="control">ID</th>
+      <th scope="col" class="control">Action</th>
     </tr>
     <tbody>
     <tr>
       <th scope="row">1</th>
       <td>Shibani</td>
       <td>568</td>
+      <td>
+        <button type="button" class="btn btn-danger btn-space">Delete</button>
+        <button type="button" class="btn btn-primary btn-space">Edit</button>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>xyz</td>
+      <td>569</td>
+      <td>
+        <button type="button" class="btn btn-danger btn-space">Delete</button>
+        <button type="button" class="btn btn-primary btn-space">Edit</button>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>mno</td>
+      <td>570</td>
       <td>
         <button type="button" class="btn btn-danger btn-space">Delete</button>
         <button type="button" class="btn btn-primary btn-space">Edit</button>
@@ -116,15 +141,51 @@ export default {
   display: flex;
   position: relative;
 }
-// .wrapper .sidebar {
-//   position: fixed;
-// }
+
 .wrapper .form1 {
   width: 2500px;
+  height: 100vh;
   margin-left: 80px;
+  // background-image: linear-gradient(white, rgb(140, 140, 213));
 }
 .navbar {
   background-color: #4549bb;
+
+  .control {
+    color: #fff;
+  }
+}
+
+.btn {
+  margin-right: 20px;
+}
+
+.btn1 {
+  margin-top: 70px;
+}
+
+.form-control {
+  height: 50px;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+.j {
+  color: #fff;
+}
+
+label {
+  color: #110e0c;
+  font-weight: bold;
+  display: block;
+  width: 150px;
+  float: center;
+  margin-left: 80px;
+  margin-top: 50px;
+}
+
+.col1 {
+  background-color: #0f1014;
 
   .control {
     color: #fff;

@@ -91,13 +91,13 @@
   </div>
 </nav>
 
-<div class="relative flex min-h-screen">
+<!-- <div class="relative flex min-h-screen">
   <div class="bg-cyan-600 text-cyan-100">Sidebar</div>
   <div>
     <div>Header</div>
     <div>Content</div>
   </div>
-</div>
+</div> -->
 <!-- <sidebar-menu :menu="menu" /> -->
 
 <!-- <form>
@@ -164,37 +164,37 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: "HelloWorld",
   props: {
-    msg: String
+    msg: String,
   },
-    data() {
-      return {
-        menu: [
-          {
-            header: 'Main Navigation',
-            hiddenOnCollapse: true
-          },
-          {
-            href: '/',
-            title: 'Dashboard',
-            icon: 'fa fa-user'
-          },
-          {
-            href: '/charts',
-            title: 'Charts',
-            icon: 'fa fa-chart-area',
-            child: [
-              {
-                href: '/charts/sublink',
-                title: 'Sub Link'
-              }
-            ]
-          }
-        ]
-      }
-    }
-  }
+  data() {
+    return {
+      menu: [
+        {
+          header: "Main Navigation",
+          hiddenOnCollapse: true,
+        },
+        {
+          href: "/",
+          title: "Dashboard",
+          icon: "fa fa-user",
+        },
+        {
+          href: "/charts",
+          title: "Charts",
+          icon: "fa fa-chart-area",
+          child: [
+            {
+              href: "/charts/sublink",
+              title: "Sub Link",
+            },
+          ],
+        },
+      ],
+    };
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -214,6 +214,6 @@ a {
   color: #42b983;
 }
 .btn-space {
-    margin-right: 8px;
+  margin-right: 8px;
 }
 </style>

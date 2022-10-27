@@ -1,23 +1,16 @@
 <template>
-  <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-  <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-  <DataForm/>
-  
+  <DataForm />
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-// import HelloWorld from './components/HelloWorld.vue';
-import DataForm from './components/DataForm.vue';
-
+import DataForm from "./components/DataForm.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    DataForm
-}
-}
-
+    DataForm,
+  },
+};
 </script>
 
 <style>
@@ -27,6 +20,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  
 }
 </style>
