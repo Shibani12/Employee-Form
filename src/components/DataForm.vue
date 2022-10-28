@@ -1,121 +1,189 @@
 <template>
- 
- <div class="wrapper">
-  <!-- <div class="sidebar"> -->
-<div class="container" :class="{'show' :showSidebar}">
-  <div class="control">
-    <i class="fas fa-angle-double-right" @click="showNav"></i>
-    </div>
-    <div class="navigation-icons">
-      <i class="fas fa-home"></i>
-      <i class="fas fa-user-circle"></i>
+  <div class="wrapper">
+    <!-- <div class="sidebar"> -->
+    <div class="container" :class="{ show: showSidebar }">
+      <div class="control">
+        <i class="fas fa-angle-double-right" @click="showNav"></i>
+      </div>
+      <div class="navigation-icons">
+        <i class="fas fa-home"></i>
+        <i class="fas fa-user-circle"></i>
+      </div>
+
+      <div class="navigation-links">
+        <transition-group name="fade">
+          <div v-show="showLink" key="1">Home</div>
+          <div v-show="showLink" key="2">User</div>
+        </transition-group>
+      </div>
     </div>
 
-    <div class="navigation-links">
-      <transition-group name="fade">
-      <div v-show="showLink" key="1">Home</div>
-      <div v-show="showLink" key="2">User</div>
-    </transition-group>
-    </div>
-  <!-- </div> -->
-</div>
- 
-  <div class="form1">
-  <nav class="navbar">
-  <div class="container-fluid">
-    
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-      
-    </button>
-    <span class="align-left control"><a>Test Application</a></span>
-    <span class="align-left"><a></a></span>
-    <span class="align-left"><a></a></span>
-    <span class="align-left"><a></a></span>
-    <span class="align-left"><a></a></span>
-    <span class="align-left"><a></a></span>
-    <span class="align-left"><a></a></span>
-  </div>
-</nav>
+    <div class="form1">
+      <nav class="navbar">
+        <div class="container-fluid">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarToggleExternalContent"
+            aria-controls="navbarToggleExternalContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <span class="align-left control"><a>Test Application</a></span>
+          <span class="align-left"><a></a></span>
+          <span class="align-left"><a></a></span>
+          <span class="align-left"><a></a></span>
+          <span class="align-left"><a></a></span>
+          <span class="align-left"><a></a></span>
+          <span class="align-left"><a></a></span>
+        </div>
+      </nav>
 
-<form>
-  <div class="format1">
-  <div class="row">
-    <div class="col">
-      <label for="exampleFormControlInput1">Employee Name
-      <input type="text" class="form-control" placeholder="First name">
-    </label>
-    </div>
-    <div class="col">
-      <label for="exampleFormControlInput2">Employee ID
-      <input type="text" class="form-control" placeholder="Last name">
-      
-    </label>
-  </div>
-  <div class="col">
-     
-      <button type="button" class="btn btn-primary btn-space btn1">Add</button>
-  </div>
-</div>
-  
-  <!-- <div>
+      <form>
+        <div class="format1">
+          <div class="row">
+            <div class="col">
+              <label for="exampleFormControlInput1"
+                >Employee First Name
+                <input
+                  type="text"
+                  class="form-control"
+                  id="text1"
+                  placeholder="First name"
+                  v-model="firstName"
+                />
+              </label>
+            </div>
+            <div class="col">
+              <label for="exampleFormControlInput2"
+                >Employee Last Name
+                <input
+                  type="text"
+                  class="form-control"
+                  id="text2"
+                  placeholder="Last name"
+                  v-model="lastName"
+                />
+              </label>
+            </div>
+            <div class="col">
+              <button
+                type="button"
+                id="addbtn"
+                class="btn btn-primary btn-space btn1"
+                @click="addValueToTable"
+              >
+                Add
+              </button>
+            </div>
+          </div>
+
+          <!-- <div>
       <button type="button" class="btn btn-primary btn-space">Add</button>
   </div> -->
 
-
-    <table class="table table-bordered">
-      <thead class="col1">
-    <tr>
-      <th scope="col" class="control">Sr No.</th>
-      <th scope="col" class="control">Name</th>
-      <th scope="col" class="control">ID</th>
-      <th scope="col" class="control">Action</th>
-    </tr>
-    <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Shibani</td>
-      <td>568</td>
-      <td>
-        <button type="button" class="btn btn-danger btn-space">Delete</button>
-        <button type="button" class="btn btn-primary btn-space">Edit</button>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>xyz</td>
-      <td>569</td>
-      <td>
-        <button type="button" class="btn btn-danger btn-space">Delete</button>
-        <button type="button" class="btn btn-primary btn-space">Edit</button>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>mno</td>
-      <td>570</td>
-      <td>
-        <button type="button" class="btn btn-danger btn-space">Delete</button>
-        <button type="button" class="btn btn-primary btn-space">Edit</button>
-      </td>
-    </tr>
-    </tbody>
-  </thead>
-    </table>
-    
+          <table id="tabledata" class="table table-bordered">
+            <thead class="col1">
+              <tr>
+                <th scope="col" id="sr" class="control">Sr No.</th>
+                <th scope="col" id="nam" class="control">First Name</th>
+                <th scope="col" id="lst" class="control">Last Name</th>
+                <th scope="col" id="act" class="control">Action</th>
+              </tr>
+            </thead>
+            <!-- <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Shibani</td>
+                <td>568</td>
+                <td>
+                  <button type="button" class="btn btn-danger btn-space">
+                    Delete
+                  </button>
+                  <button type="button" class="btn btn-primary btn-space">
+                    Edit
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>xyz</td>
+                <td>569</td>
+                <td>
+                  <button type="button" class="btn btn-danger btn-space">
+                    Delete
+                  </button>
+                  <button type="button" class="btn btn-primary btn-space">
+                    Edit
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>mno</td>
+                <td>570</td>
+                <td>
+                  <button type="button" class="btn btn-danger btn-space">
+                    Delete
+                  </button>
+                  <button type="button" class="btn btn-primary btn-space">
+                    Edit
+                  </button>
+                </td>
+              </tr>
+            </tbody> -->
+            <tbody>
+              <tr v-for="(item, idx) in tabledata" :key="idx">
+                <td>{{ item.SrNo }}</td>
+                <td>{{ item.firstName }}</td>
+                <td>{{ item.lastName }}</td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-danger btn-space"
+                    @click="deleteTheData"
+                  >
+                    Delete
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-space"
+                    @click="editTheData"
+                  >
+                    Edit
+                  </button>
+                </td>
+                <!-- and so on -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </form>
+    </div>
   </div>
-</form>
-
-</div>
-</div>
 </template>
 
 <script>
+// const txt1 = document.getElementById("text1");
+// const txt2 = document.getElementById("text2");
+// const addb = document.getElementById("addbtn");
+
+// function displaydata() {}
+
 export default {
   data: () => {
     return {
       showSidebar: false,
       showLink: false,
+      firstName: null,
+      lastName: null,
+      tabledata: [
+        // { SrNo: 1, firstName: "xyz", lastName: "xyz" },
+        // { SrNo: 2, firstName: "mno", lastName: "mno" },
+      ],
     };
   },
   methods: {
@@ -130,6 +198,47 @@ export default {
         setTimeout(() => {
           this.showLink = true;
         }, 500);
+      }
+    },
+
+    getMax(arr, prop) {
+      var max;
+      for (var i = 0; i < arr.length; i++) {
+        if (!max || parseInt(arr[i][prop]) > parseInt(max[prop])) max = arr[i];
+      }
+      return max;
+    },
+
+    addValueToTable() {
+      // alert(this.firstName + " " + this.lastName);
+      if (!this.firstName) {
+        alert("Please provide First name!");
+      } else if (!this.lastName) {
+        alert("Please provide last name!");
+      } else {
+        var result = this.tabledata.filter(
+          (x) => x.firstName === this.firstName && x.lastName === this.lastName
+        );
+        console.log(result);
+        if (result.length > 0) {
+          alert("This value is already available..");
+        } else {
+          var maxSr = 0;
+          if (this.tabledata.length == 0) {
+            maxSr = 0;
+          } else {
+            var maxValue = this.getMax(this.tabledata, "SrNo");
+            maxSr = maxValue.SrNo;
+          }
+
+          this.tabledata.push({
+            SrNo: maxSr + 1,
+            firstName: this.firstName,
+            lastName: this.lastName,
+          });
+          this.firstName = null;
+          this.lastName = null;
+        }
       }
     },
   },
