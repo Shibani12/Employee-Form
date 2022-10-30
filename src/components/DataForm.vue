@@ -137,21 +137,46 @@
             </tbody> -->
             <tbody>
               <tr v-for="(item, idx) in tabledata" :key="idx">
-                <td>{{ item.SrNo }}</td>
-                <td>{{ item.firstName }}</td>
-                <td>{{ item.lastName }}</td>
-                <td>
+                <td v-if="editting === idx">
+                  <input type="text" v-model="item.SrNo" />
+                </td>
+                <td v-else>{{ item.SrNo }}</td>
+                <td v-if="editting === idx">
+                  <input type="text" v-model="item.firstName" />
+                </td>
+                <td v-else>{{ item.firstName }}</td>
+                <td v-if="editting === idx">
+                  <input type="text" v-model="item.lastName" />
+                </td>
+                <td v-else>{{ item.lastName }}</td>
+                <td v-if="editting === idx">
                   <button
                     type="button"
                     class="btn btn-danger btn-space"
-                    @click="deleteTheData"
+                    @click="saveTheData(item)"
+                  >
+                    Save
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-space"
+                    @click="editting = null"
+                  >
+                    Cancel
+                  </button>
+                </td>
+                <td v-else>
+                  <button
+                    type="button"
+                    class="btn btn-danger btn-space"
+                    @click="deleteTheData(idx)"
                   >
                     Delete
                   </button>
                   <button
                     type="button"
                     class="btn btn-primary btn-space"
-                    @click="editTheData"
+                    @click="editTheData(idx)"
                   >
                     Edit
                   </button>
@@ -167,12 +192,6 @@
 </template>
 
 <script>
-// const txt1 = document.getElementById("text1");
-// const txt2 = document.getElementById("text2");
-// const addb = document.getElementById("addbtn");
-
-// function displaydata() {}
-
 export default {
   data: () => {
     return {
@@ -180,6 +199,7 @@ export default {
       showLink: false,
       firstName: null,
       lastName: null,
+      editting: null,
       tabledata: [
         // { SrNo: 1, firstName: "xyz", lastName: "xyz" },
         // { SrNo: 2, firstName: "mno", lastName: "mno" },
@@ -241,6 +261,25 @@ export default {
         }
       }
     },
+
+    deleteTheData(idx) {
+      // alert(idx);
+      this.tabledata.splice(idx, 1);
+    },
+    editTheData(idx) {
+      // alert("You have clicked edit button");
+      this.editting = idx;
+    },
+    saveTheData(item) {
+      if (item.firstName === "" || item.lastName === "") {
+        return;
+      }
+      this.$emit("edit:item", item);
+      this.editting = null;
+    },
+    // canceldata() {
+    //   editting = null;
+    // },
   },
 };
 </script>
